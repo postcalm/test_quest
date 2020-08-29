@@ -103,7 +103,7 @@ class Logs():
         file_handler.setLevel(logging.INFO)
         log.addHandler(file_handler)
 
-        log.error(f'{self.text}')
+        log.info(f'{self.text}')
 
 
 res, time = recognition()
