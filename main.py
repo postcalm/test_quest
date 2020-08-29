@@ -64,12 +64,12 @@ def write_to_db(datetime_, uuid_, result, phone_, time_):
         insert = psycopg2.sql.SQL('''INSERT INTO recognition 
         ("id", "datetime", "uuid", "result", "phone", "time") VALUES {}''').format(
             psycopg2.sql.SQL(',').join(map(psycopg2.sql.Literal, values)))
+        cursor.execute(insert)
     except psycopg2.OperationalError:
         MyExseption('Неудалось подключиться к базе данных')
     except:
         MyExseption('Неудалось записать в базу данных')
     else:
-        cursor.execute(insert)
         conn.commit()
         conn.close()
 
